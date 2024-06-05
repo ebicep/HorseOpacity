@@ -116,11 +116,6 @@ unifiedPublishing {
 
         relations {
             depends { // Mark as a required dependency
-                // architectury
-                curseforge = "architectury-api"
-                modrinth = "lhGA9TYQ"
-            }
-            depends { // Mark as a required dependency
                 // cloth config
                 curseforge = "cloth-config"
                 modrinth = "9s6osm5g"
