@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.layers.HorseArmorLayer;
 import net.minecraft.world.entity.animal.horse.Horse;
-import net.minecraft.world.item.HorseArmorItem;
+import net.minecraft.world.item.AnimalArmorItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
@@ -32,7 +32,7 @@ public class HorseArmorLayerMixin {
             VertexConsumer vertexConsumer,
             @Local(argsOnly = true) MultiBufferSource multiBufferSource,
             @Local(argsOnly = true) Horse horse,
-            @Local HorseArmorItem horseArmorItem,
+            @Local AnimalArmorItem animalArmorItem,
             @Share("horseopacity$isHorse") LocalBooleanRef isHorse
     ) {
         if (!Config.INSTANCE.getValues().getEnabled()) {
@@ -45,7 +45,7 @@ public class HorseArmorLayerMixin {
         if (!isHorse.get()) {
             return vertexConsumer;
         }
-        return multiBufferSource.getBuffer(RenderType.entityTranslucent(horseArmorItem.getTexture()));
+        return multiBufferSource.getBuffer(RenderType.entityTranslucent(animalArmorItem.getTexture()));
     }
 
     @ModifyArg(
