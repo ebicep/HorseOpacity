@@ -145,7 +145,7 @@ unifiedPublishing {
             println("(${project.name}) CF_TOKEN found, publishing to CurseForge")
             curseforge {
                 token = cfToken
-                id = "1027457" // Required, must be a string, ID of CurseForge project
+                id = "1031360" // Required, must be a string, ID of CurseForge project
             }
         } else {
             println("(${project.name}) CF_TOKEN not found, not publishing to CurseForge")
@@ -156,7 +156,7 @@ unifiedPublishing {
             println("(${project.name}) MODRINTH_TOKEN found, publishing to Modrinth")
             modrinth {
                 token = mrToken
-                id = "wZloEN2i" // Required, must be a string, ID of Modrinth project
+                id = "5hMBzW36" // Required, must be a string, ID of Modrinth project
             }
         } else {
             println("(${project.name}) CF_TOKEN not found, not publishing to CurseForge")
