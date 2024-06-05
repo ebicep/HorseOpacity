@@ -1,0 +1,8 @@
+{
+  "horseOpacity.title": "Horse Opacity",
+  "horseOpacity.config.general.title": "General",
+  "horseOpacity.config.general.enabled": "Enabled",
+  "horseOpacity.config.general.enabled.tooltip": "Enable/Disable changing the horse opacity.",
+  "horseOpacity.config.general.horseOpacity": "Opacity",
+  "horseOpacity.config.general.horseOpacity.tooltip": "The opacity of the horse."
+}

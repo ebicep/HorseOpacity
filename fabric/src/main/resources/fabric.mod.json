@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "contact": {
+    "homepage": "https://github.com/ebicep/HorseOpacity",
+    "sources": "https://github.com/ebicep/HorseOpacity",
+    "issues": "https://github.com/ebicep/HorseOpacity/issues"
+  },
+  "license": "GPL-3.0",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "com.ebicep.horseopacity.fabric.HorseOpacityFabric"
+      }
+    ],
+    "modmenu": [
+      "com.ebicep.horseopacity.config.fabric.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "horseopacity.mixins.json",
+    "horseopacity-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=${minecraft_version}",
+    "architectury": ">=${architectury_version}",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}",
+    "cloth-config": ">=${cloth_config_version}"
+  }
+}
