@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+import java.awt.*;
 import java.util.Objects;
 
 @Mixin(HorseArmorLayer.class)
@@ -24,7 +25,7 @@ public class HorseArmorLayerMixin {
             method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/animal/horse/Horse;FFFFFF)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/model/HorseModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V"
+                    target = "Lnet/minecraft/client/model/HorseModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;III)V"
             ),
             index = 1
     )
@@ -52,18 +53,18 @@ public class HorseArmorLayerMixin {
             method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/animal/horse/Horse;FFFFFF)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/model/HorseModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V"
+                    target = "Lnet/minecraft/client/model/HorseModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;III)V"
             ),
-            index = 7
+            index = 4
     )
-    public float renderToBuffer(float opacity, @Share("horseopacity$isHorse") LocalBooleanRef isHorse) {
+    public int renderToBuffer(int opacity, @Share("horseopacity$isHorse") LocalBooleanRef isHorse) {
         if (!Config.INSTANCE.getValues().getEnabled()) {
             return opacity;
         }
         if (!isHorse.get()) {
             return opacity;
         }
-        return Config.INSTANCE.getValues().getOpacity();
+        return Config.INSTANCE.getValues().getOpacityColor();
     }
 
 }

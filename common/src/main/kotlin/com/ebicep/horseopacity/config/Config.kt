@@ -3,6 +3,7 @@ package com.ebicep.horseopacity.config
 import com.ebicep.horseopacity.HorseOpacity
 import com.ebicep.horseopacity.MOD_ID
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import java.awt.Color
 import java.io.File
@@ -47,7 +48,7 @@ object Config {
     }
 
     private fun loadValues() {
-
+        values.opacityColor = Color(1f, 1f, 1f, values.opacity).rgb
     }
 
 }
@@ -55,5 +56,13 @@ object Config {
 @Serializable
 data class ConfigVariables(
     var enabled: Boolean = true,
-    var opacity: Float = 1f,
-)
+) {
+    var opacity: Float = 1f
+        set(value) {
+            field = value
+            opacityColor = Color(1f, 1f, 1f, value).rgb
+        }
+
+    @Transient
+    var opacityColor: Int = 0
+}

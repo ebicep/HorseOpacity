@@ -15,6 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.awt.*;
 import java.util.Objects;
 
 @Mixin(LivingEntityRenderer.class)
@@ -59,18 +60,18 @@ public class LivingEntityRendererMixin {
             method = "render(Lnet/minecraft/world/entity/LivingEntity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/client/model/EntityModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V"
+                    target = "Lnet/minecraft/client/model/EntityModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;III)V"
             ),
-            index = 7
+            index = 4
     )
-    public float renderToBuffer(float opacity, @Share("horseopacity$isHorse") LocalBooleanRef isHorse) {
+    public int renderToBuffer(int opacity, @Share("horseopacity$isHorse") LocalBooleanRef isHorse) {
         if (!Config.INSTANCE.getValues().getEnabled()) {
             return opacity;
         }
         if (!isHorse.get()) {
             return opacity;
         }
-        return Config.INSTANCE.getValues().getOpacity();
+        return Config.INSTANCE.getValues().getOpacityColor();
     }
 
 }
